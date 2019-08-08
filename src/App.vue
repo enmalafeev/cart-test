@@ -1,13 +1,16 @@
 <template lang="pug">
   div(id="app")
+    cart
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import cart from "./components/cart.vue";
 
 export default {
   name: "app",
-  components: {}
+  components: {
+    cart
+  }
 };
 </script>
 
