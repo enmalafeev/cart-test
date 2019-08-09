@@ -14,7 +14,8 @@ export default new Vuex.Store({
   },
   mutations: {
     addItemToCart(state) {
-      return state.cartList.push(state.cart);
+      state.cartList.push({ ...state.cart });
+      state.cart = {};
     },
   },
   actions: {

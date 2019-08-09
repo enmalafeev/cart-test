@@ -19,7 +19,6 @@
       type="is-info"
       @click.prevent="addItemToCart"
     ) Добавить
-    pre {{ cartList }}
 </template>
 
 <script>

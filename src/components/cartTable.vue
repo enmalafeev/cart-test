@@ -1,22 +1,18 @@
 <template lang="pug">
   b-table(
-    :data="data"
+    :data="cartList"
     :columns="columns"
   )
 </template>
 
 <script>
 export default {
+  props: {
+    cartList: Array,
+    default: () => [],
+  },
   data() {
     return {
-      data: [
-        {
-          name: "Apple Iphone",
-          description: "настощий яблоный смартфон",
-          price: "78550",
-          date: "09.08.2019"
-        }
-      ],
       columns: [
         {
           field: "name",
