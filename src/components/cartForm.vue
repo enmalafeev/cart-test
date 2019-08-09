@@ -22,19 +22,16 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations } from "vuex";
 
 export default {
   computed: {
-    ...mapState([
-      'cart',
-      'cartList'
-    ]),
+    ...mapState(["cart", "cartList"])
   },
   methods: {
-    ...mapMutations(['addItemToCart']),
+    ...mapMutations(["addItemToCart"])
   }
-}
+};
 </script>
 
 
