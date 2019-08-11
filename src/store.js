@@ -8,14 +8,13 @@ export default new Vuex.Store({
     cart: {
       name: '',
       description: '',
-      price: 0,
+      price: '',
     },
     cartList: [],
   },
   mutations: {
     addItemToCart(state) {
       state.cartList.push({ ...state.cart });
-      state.cart = {};
     },
   },
   actions: {
