@@ -9,15 +9,13 @@ export default new Vuex.Store({
       name: '',
       description: '',
       price: '',
+      date: '',
     },
     cartList: [],
   },
   mutations: {
     addItemToCart(state) {
-      state.cartList.push({ ...state.cart });
+      state.cartList.push({ ...state.cart, date: new Date().toLocaleString() });
     },
-  },
-  actions: {
-
   },
 });

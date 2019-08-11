@@ -9,7 +9,7 @@
 export default {
   props: {
     cartList: Array,
-    default: () => [],
+    default: () => []
   },
   data() {
     return {

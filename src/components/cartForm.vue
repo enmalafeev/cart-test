@@ -23,7 +23,7 @@
     )
     b-button(
       type="is-info"
-      @click.prevent="addToCart"
+      @click.prevent="addToCart",
     ) Добавить
 </template>
 
@@ -47,6 +47,7 @@ export default {
   computed: {
     ...mapState(["cart"])
   },
+  // parseFloat(str).toLocaleString('ru-RU');
   methods: {
     ...mapMutations(["addItemToCart"]),
     addToCart() {
