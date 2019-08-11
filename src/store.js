@@ -21,9 +21,11 @@ export default new Vuex.Store({
           date: new Date().toLocaleString(),
         },
       );
+      localStorage.setItem('cart', JSON.stringify(state.cartList));
     },
     removeItemFromCart(state, itemName) {
       state.cartList = state.cartList.filter(item => item.name !== itemName);
+      localStorage.setItem('cart', JSON.stringify(state.cartList));
     },
   },
 });

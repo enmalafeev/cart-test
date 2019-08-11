@@ -14,7 +14,7 @@ section
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   props: {
@@ -45,6 +45,9 @@ export default {
       ]
     };
   },
+  created() {
+    this.cartList = JSON.parse(localStorage.getItem("cart" || []));
+  },
   methods: {
     ...mapMutations(["removeItemFromCart"]),
     removeFromCart() {
@@ -53,20 +56,4 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-// .cart-table {
-//   position: relative;
-// }
-
-// .remove-btn {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   display: none;
-//   &:hover {
-//     display: visible;
-//   }
-// }
-</style>
 

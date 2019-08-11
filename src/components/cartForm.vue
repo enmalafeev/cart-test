@@ -64,18 +64,15 @@ export default {
 };
 </script>
 
-
 <style lang="scss" scoped>
 .form {
   display: flex;
   justify-content: flex-start;
 }
-
 .form__input {
   display: block;
   position: relative;
 }
-
 .error {
   position: absolute;
   top: -25px;
