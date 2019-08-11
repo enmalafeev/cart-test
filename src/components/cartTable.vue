@@ -1,5 +1,6 @@
 <template lang="pug">
   b-table(
+    v-show="cartList.length > 0"
     :data="cartList"
     :columns="columns"
   )
