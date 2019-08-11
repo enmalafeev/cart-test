@@ -53,7 +53,10 @@ export default {
       this.$validate().then(success => {
         if (!success) return;
         this.addItemToCart();
-        this.$validate.reset();
+        this.cart.name = "";
+        this.cart.description = "";
+        this.cart.price = "";
+        this.validation.reset();
       });
     }
   }
