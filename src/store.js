@@ -15,7 +15,15 @@ export default new Vuex.Store({
   },
   mutations: {
     addItemToCart(state) {
-      state.cartList.push({ ...state.cart, date: new Date().toLocaleString() });
+      state.cartList.push(
+        {
+          ...state.cart,
+          date: new Date().toLocaleString(),
+        },
+      );
+    },
+    removeItemFromCart(state, itemName) {
+      state.cartList = state.cartList.filter(item => item.name !== itemName);
     },
   },
 });

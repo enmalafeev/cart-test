@@ -1,12 +1,21 @@
 <template lang="pug">
-  b-table(
+section
+  b-table.cart-table(
     v-show="cartList.length > 0"
     :data="cartList"
+    :selected.sync="selected"
     :columns="columns"
+    focusable
   )
+  button.button.field.is-danger.remove-btn(
+    @click="removeFromCart"
+  )
+    span Clear selected
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   props: {
     cartList: Array,
@@ -14,6 +23,7 @@ export default {
   },
   data() {
     return {
+      selected: this.cartList[1],
       columns: [
         {
           field: "name",
@@ -34,6 +44,29 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    ...mapMutations(["removeItemFromCart"]),
+    removeFromCart() {
+      this.removeItemFromCart(this.selected.name);
+    }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+// .cart-table {
+//   position: relative;
+// }
+
+// .remove-btn {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   display: none;
+//   &:hover {
+//     display: visible;
+//   }
+// }
+</style>
+

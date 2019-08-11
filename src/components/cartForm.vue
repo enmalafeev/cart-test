@@ -45,7 +45,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["cart"])
+    ...mapState(["cart", "cartList"])
   },
   // parseFloat(str).toLocaleString('ru-RU');
   methods: {
