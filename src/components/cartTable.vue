@@ -3,12 +3,14 @@ section
   b-table.cart-table(
     v-show="cartList.length > 0"
     :data="cartList"
-    :selected.sync="selected"
     :columns="columns"
-    focusable
+    :checked-rows.sync="checkedRows"
+    checkable
+    :checkbox-position="checkboxPosition"
   )
   button.button.field.is-danger.remove-btn(
     @click="removeFromCart"
+    :disabled="!checkedRows.length"
   )
     span Clear selected
 </template>
@@ -19,11 +21,13 @@ import { mapMutations, mapState } from "vuex";
 export default {
   props: {
     cartList: Array,
-    default: () => []
+    default: () => [],
   },
   data() {
     return {
-      selected: this.cartList[1],
+      // selected: this.cartList[1],
+      checkboxPosition: 'left',
+      checkedRows: [],
       columns: [
         {
           field: "name",
@@ -46,12 +50,13 @@ export default {
     };
   },
   created() {
+    if (localStorage.cart.length === 0) return;
     this.getCartListFromLocalStorage();
   }, 
   methods: {
     ...mapMutations(["removeItemFromCart", "getCartListFromLocalStorage"]),
     removeFromCart() {
-      this.removeItemFromCart(this.selected.name);
+      this.removeItemFromCart(this.checkedRows);
     }
   }
 };

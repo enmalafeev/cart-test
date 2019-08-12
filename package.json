@@ -11,6 +11,7 @@
   "dependencies": {
     "buefy": "^0.8.2",
     "core-js": "^2.6.5",
+    "lodash": "^4.17.15",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
     "simple-vue-validator": "^0.16.0",

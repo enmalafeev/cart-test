@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { differenceBy } from 'lodash';
 
 Vue.use(Vuex);
 
@@ -26,8 +27,8 @@ export default new Vuex.Store({
     getCartListFromLocalStorage(state) {
       state.cartList = JSON.parse(localStorage.getItem('cart' || []));
     },
-    removeItemFromCart(state, itemName) {
-      state.cartList = state.cartList.filter(item => item.name !== itemName);
+    removeItemFromCart(state, itemNames) {
+      state.cartList = differenceBy(state.cartList, itemNames, 'name');
       localStorage.setItem('cart', JSON.stringify(state.cartList));
     },
   },
