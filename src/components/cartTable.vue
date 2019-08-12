@@ -46,10 +46,10 @@ export default {
     };
   },
   created() {
-    this.cartList = JSON.parse(localStorage.getItem("cart" || []));
-  },
+    this.getCartListFromLocalStorage();
+  }, 
   methods: {
-    ...mapMutations(["removeItemFromCart"]),
+    ...mapMutations(["removeItemFromCart", "getCartListFromLocalStorage"]),
     removeFromCart() {
       this.removeItemFromCart(this.selected.name);
     }

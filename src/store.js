@@ -23,6 +23,9 @@ export default new Vuex.Store({
       );
       localStorage.setItem('cart', JSON.stringify(state.cartList));
     },
+    getCartListFromLocalStorage(state) {
+      state.cartList = JSON.parse(localStorage.getItem('cart' || []));
+    },
     removeItemFromCart(state, itemName) {
       state.cartList = state.cartList.filter(item => item.name !== itemName);
       localStorage.setItem('cart', JSON.stringify(state.cartList));
