@@ -1,53 +1,50 @@
 <template lang="pug">
-section(v-show="cartList.length > 0")
-  b-table.cart-table(
-    :data="cartList"
-    :columns="columns"
-    :checked-rows.sync="checkedRows"
-    checkable
-    focusable
-    :checkbox-position="checkboxPosition"
-    :selected.sync="selected"
-  )
-  button.button.field.is-danger.remove-btn(
-    @click="removeFromCart"
-    :disabled="!checkedRows.length"
-  )
-    span Удалить выбранные
+section(v-show="this.cartList.length > 0")
+  table.table.table-striped
+    thead
+      tr
+        th(v-for="column in this.columns") {{ column.label }}
+      tr(
+        v-for="item in cartList"
+        :class="{checked: item.checked}")
+        td
+          input(
+            type="checkbox"
+            @change="checkProduct"
+            :checked="item.checked")
+        td {{ item.id }}
+        td
+          input(type="text" v-model="item.name")
+        td
+          input(type="text" v-model="item.description")
+        td
+          input(type="text" v-model="item.price")
+        td {{ item.date }}
+  button.btn.btn-danger(type="button" @click="removeFromCart") Удалить выбранные
 </template>
 
 <script>
 import { mapMutations, mapState } from "vuex";
 
 export default {
-  props: {
-    cartList: Array,
-    default: () => []
-  },
   data() {
     return {
       edited: false,
-      selected: this.cartList[1],
-      checkboxPosition: "left",
-      checkedRows: [],
-      selected: this.cartList[1],
       columns: [
         {
-          field: "name",
+          label: ""
+        },
+        {
           label: "Название"
         },
         {
-          field: "description",
           label: "Описание"
         },
         {
-          field: "price",
           label: "Цена"
         },
         {
-          field: "date",
-          label: "Дата покупки",
-          centered: true
+          label: "Дата покупки"
         }
       ]
     };
@@ -57,14 +54,39 @@ export default {
     this.getCartListFromLocalStorage();
   },
   computed: {
-    ...mapState(["cart"])
+    ...mapState({
+      cart: state => state.cart,
+      cartList: state => state.cartList
+    })
   },
   methods: {
-    ...mapMutations(["removeItemFromCart", "getCartListFromLocalStorage"]),
+    ...mapMutations([
+      "removeItemFromCart",
+      "getCartListFromLocalStorage",
+      "checkItem"
+    ]),
+    checkProduct(e) {
+      const product = {
+        ...this.cart,
+        checked: e.target.checked
+      };
+      this.checkItem(product);
+    },
     removeFromCart() {
-      this.removeItemFromCart(this.checkedRows);
+      this.removeItemFromCart(this.cart.id);
     }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+input {
+  font-size: 16px;
+  border: transparent;
+}
+.checked {
+  background-color: #e9ecef;
+}
+</style>
+
 

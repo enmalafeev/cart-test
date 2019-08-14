@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Buefy from 'buefy';
 import SimpleVueValidation from 'simple-vue-validator';
 import 'buefy/dist/buefy.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import store from './store';
 import App from './App.vue';
 

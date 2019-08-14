@@ -3,13 +3,11 @@
     h1.title Корзина покупок
     .container
       cartForm
-      cartTable(
-        :cartList="cartList",
-      )
+      cartTable
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 
 import cartForm from "./cartForm.vue";
 import cartTable from "./cartTable.vue";
@@ -20,10 +18,7 @@ export default {
     cartTable
   },
   computed: {
-    ...mapState([
-      'cartList',
-      'cart'
-    ]),
-  },
+    ...mapState(["cartList", "cart"])
+  }
 };
 </script>
