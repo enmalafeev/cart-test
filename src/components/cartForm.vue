@@ -8,14 +8,14 @@
       v-model="cart.name"
     )
     span.error--desc {{ validation.firstError("cart.description") }}
-    input(
+    input.form__input(
       type="text"
       placeholder="Описание"
       name="description"
       v-model="cart.description"
     )
     span.error--price {{ validation.firstError("cart.price") }}
-    input(
+    input.form__input(
       type="number"
       placeholder="Цена"
       name="price"
@@ -47,7 +47,6 @@ export default {
   computed: {
     ...mapState(["cart", "cartList"])
   },
-  // parseFloat(str).toLocaleString('ru-RU');
   methods: {
     ...mapMutations(["addItemToCart"]),
     addToCart() {
@@ -68,10 +67,14 @@ export default {
 .form {
   display: flex;
   justify-content: flex-start;
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .form__input {
   display: block;
-  position: relative;
+  padding-left: 10px;
+  margin-right: 10px;
 }
 .error {
   position: absolute;
@@ -82,13 +85,13 @@ export default {
 .error--desc {
   position: absolute;
   top: -25px;
-  left: 190px;
+  left: 195px;
   color: firebrick;
 }
 .error--price {
   position: absolute;
   top: -25px;
-  left: 375px;
+  left: 385px;
   color: firebrick;
 }
 </style>

@@ -16,9 +16,6 @@ export default {
   components: {
     cartForm,
     cartTable
-  },
-  computed: {
-    ...mapState(["cartList", "cart"])
   }
 };
 </script>
