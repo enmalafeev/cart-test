@@ -16,6 +16,9 @@ export default new Vuex.Store({
     cartList: [],
   },
   mutations: {
+    addToLocalStorage(state) {
+      localStorage.setItem('cart', JSON.stringify(state.cartList));
+    },
     addItemToCart(state) {
       state.cartList.push(
         {

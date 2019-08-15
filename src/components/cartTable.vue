@@ -35,7 +35,10 @@ export default {
         },
         {
           label: "Дата покупки"
-        }
+        },
+        {
+          label: ""
+        },
       ]
     };
   },

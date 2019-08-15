@@ -7,11 +7,11 @@
         @change="checkProduct"
         :checked="cartRow.checked")
     td
-      input(type="text" v-model="cartRow.name")
+      input(type="text" v-model="cartRow.name" @change="this.addToLocalStorage")
     td
-      input(type="text" v-model="cartRow.description")
+      input(type="text" v-model="cartRow.description" @change="this.addToLocalStorage")
     td
-      input(type="text" v-model="cartRow.price")
+      input(type="text" v-model="cartRow.price" @change="this.addToLocalStorage")
     td {{ cartRow.date }}
     td
       button.btn.btn-danger(
@@ -29,6 +29,7 @@ export default {
   },
   methods: {
     ...mapMutations([
+      "addToLocalStorage",
       "checkItem",
       "removeItemFromCart"
     ]),
