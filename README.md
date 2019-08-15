@@ -1,5 +1,10 @@
 # cart-test
 
+Тестовое задание "Корзина товаров"
+
+Ссылка на приложение: <https://enmalafeev.github.io/cart-test/dist>
+
+
 ## Project setup
 ```
 yarn install
