@@ -1,27 +1,27 @@
 <template lang="pug">
   form.form
     span.error {{ validation.firstError("cart.name") }}
-    b-input.form__input(
+    input.form__input(
       type="text"
       placeholder="Название"
       name="name"
       v-model="cart.name"
     )
     span.error--desc {{ validation.firstError("cart.description") }}
-    b-input(
+    input(
       type="text"
       placeholder="Описание"
       name="description"
       v-model="cart.description"
     )
     span.error--price {{ validation.firstError("cart.price") }}
-    b-input(
+    input(
       type="number"
       placeholder="Цена"
       name="price"
       v-model="cart.price"
     )
-    b-button(
+    button.btn.btn-primary(
       type="is-info"
       @click.prevent="addToCart",
     ) Добавить
