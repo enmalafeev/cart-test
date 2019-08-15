@@ -2,7 +2,7 @@
 
 Тестовое задание "Корзина товаров"
 
-Ссылка на приложение: <https://enmalafeev.github.io/cart-test/dist>
+Ссылка на приложение: <https://enmalafeev.github.io/cart-test/>
 
 
 ## Project setup
