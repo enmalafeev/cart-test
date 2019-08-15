@@ -2,8 +2,8 @@
   header.header
     h1.title Корзина покупок
     .container
-      cartForm
-      cartTable
+      cart-form
+      cart-table
 </template>
 
 <script>

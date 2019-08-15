@@ -1,14 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { differenceBy } from 'lodash';
 
 Vue.use(Vuex);
 
-let uniqId = 0;
 export default new Vuex.Store({
   state: {
     cart: {
-      id: 0,
+      id: '',
       checked: false,
       name: '',
       description: '',
@@ -19,12 +17,11 @@ export default new Vuex.Store({
   },
   mutations: {
     addItemToCart(state) {
-      uniqId += 1;
       state.cartList.push(
         {
           ...state.cart,
           date: new Date().toLocaleString(),
-          id: uniqId,
+          id: Math.random().toString(36).slice(2),
         },
       );
       localStorage.setItem('cart', JSON.stringify(state.cartList));
@@ -36,7 +33,6 @@ export default new Vuex.Store({
       state.cartList = JSON.parse(localStorage.getItem('cart' || []));
     },
     removeItemFromCart(state, productId) {
-      console.log(productId);
       state.cartList = state.cartList.filter(item => item.id !== productId);
       localStorage.setItem('cart', JSON.stringify(state.cartList));
     },

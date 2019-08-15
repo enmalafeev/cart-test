@@ -4,29 +4,19 @@ section(v-show="this.cartList.length > 0")
     thead
       tr
         th(v-for="column in this.columns") {{ column.label }}
-      tr(
-        v-for="item in cartList"
-        :class="{checked: item.checked}")
-        td
-          input(
-            type="checkbox"
-            @change="checkProduct"
-            :checked="item.checked")
-        td {{ item.id }}
-        td
-          input(type="text" v-model="item.name")
-        td
-          input(type="text" v-model="item.description")
-        td
-          input(type="text" v-model="item.price")
-        td {{ item.date }}
-  button.btn.btn-danger(type="button" @click="removeFromCart") Удалить выбранные
+      cart-table-row(
+        v-for="cartRow in cartList"
+        :cartRow="cartRow")
 </template>
 
 <script>
 import { mapMutations, mapState } from "vuex";
+import cartTableRow from './cartTableRow.vue'
 
 export default {
+  components: {
+    cartTableRow
+  },
   data() {
     return {
       edited: false,
@@ -50,43 +40,20 @@ export default {
     };
   },
   created() {
-    if (localStorage.cart.length === 0) return;
+    if (!localStorage.cart) return;
     this.getCartListFromLocalStorage();
   },
   computed: {
     ...mapState({
-      cart: state => state.cart,
       cartList: state => state.cartList
     })
   },
   methods: {
     ...mapMutations([
-      "removeItemFromCart",
       "getCartListFromLocalStorage",
-      "checkItem"
     ]),
-    checkProduct(e) {
-      const product = {
-        ...this.cart,
-        checked: e.target.checked
-      };
-      this.checkItem(product);
-    },
-    removeFromCart() {
-      this.removeItemFromCart(this.cart.id);
-    }
   }
 };
 </script>
-
-<style lang="scss" scoped>
-input {
-  font-size: 16px;
-  border: transparent;
-}
-.checked {
-  background-color: #e9ecef;
-}
-</style>
 
 
