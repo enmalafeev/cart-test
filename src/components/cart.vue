@@ -1,6 +1,6 @@
 <template lang="pug">
   header.header
-    h1.title Корзина покупок
+    h1.title Список покупок
     .container
       cart-form
       cart-table
