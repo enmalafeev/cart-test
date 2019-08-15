@@ -4,13 +4,13 @@
 </template>
 
 <script>
-import cart from "./components/cart.vue";
+import cart from './components/cart.vue';
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
-    cart
-  }
+    cart,
+  },
 };
 </script>
 

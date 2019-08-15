@@ -19,7 +19,7 @@
     td
       input(
         type="number"
-        v-model="cartRow.price" 
+        v-model="cartRow.price"
         @change="this.addToLocalStorage")
     td {{ cartRow.date }}
     td
@@ -29,31 +29,31 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations } from 'vuex';
 
 export default {
   props: {
     cartRow: Object,
-    default: () => Object
+    default: () => Object,
   },
   methods: {
     ...mapMutations([
-      "addToLocalStorage",
-      "checkItem",
-      "removeItemFromCart"
+      'addToLocalStorage',
+      'checkItem',
+      'removeItemFromCart',
     ]),
     checkProduct(e) {
       const product = {
         ...this.cartRow,
-        checked: e.target.checked
+        checked: e.target.checked,
       };
       this.checkItem(product);
     },
     removeFromCart() {
       this.removeItemFromCart(this.cartRow.id);
-    }
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

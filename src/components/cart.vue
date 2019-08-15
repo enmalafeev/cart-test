@@ -7,15 +7,13 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-
-import cartForm from "./cartForm.vue";
-import cartTable from "./cartTable.vue";
+import cartForm from './cartForm.vue';
+import cartTable from './cartTable.vue';
 
 export default {
   components: {
     cartForm,
-    cartTable
-  }
+    cartTable,
+  },
 };
 </script>

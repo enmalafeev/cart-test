@@ -28,38 +28,41 @@
 </template>
 
 <script>
-import { Validator } from "simple-vue-validator";
-import { mapState, mapMutations } from "vuex";
+import SimpleVueValidator from 'simple-vue-validator';
+
+import { mapState, mapMutations } from 'vuex';
+
+const { Validator } = SimpleVueValidator;
 
 export default {
-  mixins: [require("simple-vue-validator").mixin],
+  mixins: [SimpleVueValidator.mixin],
   validators: {
-    "cart.name"(value) {
-      return Validator.value(value).required("Заполните поле");
+    'cart.name': function (value) {
+      return Validator.value(value).required('Заполните поле');
     },
-    "cart.description"(value) {
-      return Validator.value(value).required("Заполните поле");
+    'cart.description': function (value) {
+      return Validator.value(value).required('Заполните поле');
     },
-    "cart.price"(value) {
-      return Validator.value(value).required("Заполните поле");
-    }
+    'cart.price': function (value) {
+      return Validator.value(value).required('Заполните поле');
+    },
   },
   computed: {
-    ...mapState(["cart", "cartList"])
+    ...mapState(['cart', 'cartList']),
   },
   methods: {
-    ...mapMutations(["addItemToCart"]),
+    ...mapMutations(['addItemToCart']),
     addToCart() {
-      this.$validate().then(success => {
+      this.$validate().then((success) => {
         if (!success) return;
         this.addItemToCart();
-        this.cart.name = "";
-        this.cart.description = "";
-        this.cart.price = "";
+        this.cart.name = '';
+        this.cart.description = '';
+        this.cart.price = '';
         this.validation.reset();
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -95,4 +98,3 @@ export default {
   color: firebrick;
 }
 </style>
-

@@ -10,36 +10,36 @@ section(v-show="this.cartList.length > 0")
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
-import cartTableRow from './cartTableRow.vue'
+import { mapMutations, mapState } from 'vuex';
+import cartTableRow from './cartTableRow.vue';
 
 export default {
   components: {
-    cartTableRow
+    cartTableRow,
   },
   data() {
     return {
       edited: false,
       columns: [
         {
-          label: ""
+          label: '',
         },
         {
-          label: "Название"
+          label: 'Название',
         },
         {
-          label: "Описание"
+          label: 'Описание',
         },
         {
-          label: "Цена"
+          label: 'Цена',
         },
         {
-          label: "Дата покупки"
+          label: 'Дата покупки',
         },
         {
-          label: ""
+          label: '',
         },
-      ]
+      ],
     };
   },
   created() {
@@ -48,15 +48,13 @@ export default {
   },
   computed: {
     ...mapState({
-      cartList: state => state.cartList
-    })
+      cartList: state => state.cartList,
+    }),
   },
   methods: {
     ...mapMutations([
-      "getCartListFromLocalStorage",
+      'getCartListFromLocalStorage',
     ]),
-  }
+  },
 };
 </script>
-
-
